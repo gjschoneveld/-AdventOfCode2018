@@ -10,10 +10,10 @@ namespace Day01
     {
         static void Main(string[] args)
         {
-            var answer1 = "test 1";
+            var answer1 = "Test A";
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var answer2 = "test 2";
+            var answer2 = "Test B";
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
