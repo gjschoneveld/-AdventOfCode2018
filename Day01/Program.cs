@@ -19,12 +19,10 @@ namespace Day01
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var seen = new HashSet<int>();
-
             var frequency = 0;
+            var seen = new HashSet<int> { frequency };
 
             var index = 0;
-
             while (true)
             {
                 frequency += values[index];
