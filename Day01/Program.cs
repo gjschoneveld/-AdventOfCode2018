@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,39 @@ namespace Day01
     {
         static void Main(string[] args)
         {
-            var answer1 = "Test ABC";
+            var input = File.ReadAllLines("input.txt");
+
+            var values = input.Select(int.Parse).ToList();
+
+            var answer1 = values.Sum();
             Console.WriteLine($"Answer 1: {answer1}");
 
-            var answer2 = "Test XYZ";
+
+            var seen = new HashSet<int>();
+
+            var frequency = 0;
+
+            var index = 0;
+
+            while (true)
+            {
+                frequency += values[index];
+
+                if (seen.Contains(frequency))
+                {
+                    break;
+                }
+
+                seen.Add(frequency);
+
+                index++;
+                if (index == values.Count)
+                {
+                    index = 0;
+                }
+            }
+
+            var answer2 = frequency;
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
