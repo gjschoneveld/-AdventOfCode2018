@@ -59,23 +59,9 @@ namespace Day03
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var seen = new HashSet<int>();
+            var duplicates = field.Where(kv => kv.Value.Count > 1).SelectMany(kv => kv.Value).Select(r => r.id).Distinct().ToList();
 
-            foreach (var kv in field)
-            {
-                if (kv.Value.Count > 1)
-                {
-                    foreach (var r in kv.Value)
-                    {
-                        if (!seen.Contains(r.id))
-                        {
-                            seen.Add(r.id);
-                        }
-                    }
-                }
-            }
-
-            var answer2 = rectangles.Single(r => !seen.Contains(r.id)).id;
+            var answer2 = rectangles.Single(r => !duplicates.Contains(r.id)).id;
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
