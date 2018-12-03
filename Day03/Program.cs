@@ -10,10 +10,10 @@ namespace Day03
     class Rectangle
     {
         public int id;
-        public int x;
-        public int y;
-        public int width;
-        public int height;
+        private int x;
+        private int y;
+        private int width;
+        private int height;
 
         public IEnumerable<(int x, int y)> GetOccupiedPositions()
         {
