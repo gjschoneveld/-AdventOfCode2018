@@ -59,9 +59,9 @@ namespace Day03
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var duplicates = field.Where(kv => kv.Value.Count > 1).SelectMany(kv => kv.Value).Select(r => r.id).Distinct().ToList();
+            var overlaps = field.Where(kv => kv.Value.Count > 1).SelectMany(kv => kv.Value).Select(r => r.id).Distinct().ToList();
 
-            var answer2 = rectangles.Single(r => !duplicates.Contains(r.id)).id;
+            var answer2 = rectangles.Single(r => !overlaps.Contains(r.id)).id;
             Console.WriteLine($"Answer 2: {answer2}");
 
             Console.ReadKey();
