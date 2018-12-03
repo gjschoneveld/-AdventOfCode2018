@@ -15,6 +15,17 @@ namespace Day03
         public int width;
         public int height;
 
+        public IEnumerable<(int x, int y)> GetOccupiedPositions()
+        {
+            for (int x = this.x; x < this.x + width; x++)
+            {
+                for (int y = this.y; y < this.y + height; y++)
+                {
+                    yield return (x, y);
+                }
+            }
+        }
+
         public static Rectangle Parse(string x)
         {
             var parts = x.Split(new char[] { ' ', '#', '@', ',', ':', 'x' }, StringSplitOptions.RemoveEmptyEntries);
@@ -41,17 +52,14 @@ namespace Day03
 
             foreach (var r in rectangles)
             {
-                for (int x = r.x; x < r.x + r.width; x++)
+                foreach (var p in r.GetOccupiedPositions())
                 {
-                    for (int y = r.y; y < r.y + r.height; y++)
+                    if (!field.ContainsKey(p))
                     {
-                        if (!field.ContainsKey((x, y)))
-                        {
-                            field[(x, y)] = new List<Rectangle>();
-                        }
-
-                        field[(x, y)].Add(r);
+                        field[p] = new List<Rectangle>();
                     }
+
+                    field[p].Add(r);
                 }
             }
 
