@@ -88,9 +88,9 @@ namespace Day04
 
             var max = totals.Max(x => x.Value.Count);
             var maxID = totals.Single(x => x.Value.Count == max).Key;
-            var maxDays = totals[maxID].GroupBy(x => x).OrderByDescending(g => g.Count()).First().Key;
+            var maxMinute = totals[maxID].GroupBy(x => x).OrderByDescending(g => g.Count()).First().Key;
 
-            var answer1 = maxID * maxDays;
+            var answer1 = maxID * maxMinute;
             Console.WriteLine($"Answer 1: {answer1}");
 
 
