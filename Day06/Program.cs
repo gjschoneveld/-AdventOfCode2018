@@ -92,19 +92,30 @@ namespace Day06
             Console.WriteLine($"Answer 1: {answer1}");
 
 
-            var grid2 = new int[width, height];
+            var threshold = 10000;
 
-            for (int y = minY; y <= maxY; y++)
+            var maxExtra = threshold / coordinates.Count;
+
+            var minX2 = coordinates.Min(c => c.position.x) - maxExtra;
+            var maxX2 = coordinates.Max(c => c.position.x) + maxExtra;
+            var minY2 = coordinates.Min(c => c.position.y) - maxExtra;
+            var maxY2 = coordinates.Max(c => c.position.y) + maxExtra;
+
+            var width2 = maxX2 - minX2 + 1;
+            var height2 = maxY2 - minY2 + 1;
+
+            var grid2 = new int[width2, height2];
+
+            for (int y = minY2; y <= maxY2; y++)
             {
-                for (int x = minX; x <= maxX; x++)
+                for (int x = minX2; x <= maxX2; x++)
                 {
                     var postion = (x, y);
                     var sum = coordinates.Sum(c => Distance(c.position, postion));
-                    grid2[x - minX, y - minY] = sum;
+                    grid2[x - minX2, y - minY2] = sum;
                 }
             }
 
-            var threshold = 10000;
             var regionSize = grid2.OfType<int>().Count(s => s < threshold);
 
             var answer2 = regionSize;
