@@ -96,10 +96,10 @@ namespace Day06
 
             var maxExtra = threshold / coordinates.Count;
 
-            var minX2 = coordinates.Min(c => c.position.x) - maxExtra;
-            var maxX2 = coordinates.Max(c => c.position.x) + maxExtra;
-            var minY2 = coordinates.Min(c => c.position.y) - maxExtra;
-            var maxY2 = coordinates.Max(c => c.position.y) + maxExtra;
+            var minX2 = minX - maxExtra;
+            var maxX2 = maxX + maxExtra;
+            var minY2 = minY - maxExtra;
+            var maxY2 = maxY + maxExtra;
 
             var width2 = maxX2 - minX2 + 1;
             var height2 = maxY2 - minY2 + 1;
