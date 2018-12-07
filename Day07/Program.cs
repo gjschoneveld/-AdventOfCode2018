@@ -15,12 +15,11 @@ namespace Day07
 
     class Program
     {
-        public static (char a, char b) Parse(string x)
+        public static (char require, char node) Parse(string x)
         {
             var parts = x.Split(' ');
 
             return (parts[1][0], parts[7][0]);
-            // Step C must be finished before step A can begin.
         }
 
         public static char? NextNode(Dictionary<char, List<char>> required, List<char> nodes, List<char> visited)
@@ -41,10 +40,10 @@ namespace Day07
             var input = File.ReadAllLines("input.txt");
             var rules = input.Select(Parse).ToList();
 
-            var nodes = rules.SelectMany(r => new char[] { r.a, r.b }).Distinct().OrderBy(n => n).ToList();
+            var nodes = rules.SelectMany(r => new char[] { r.require, r.node }).Distinct().OrderBy(n => n).ToList();
             var nodes2 = nodes.ToList();
 
-            var required = nodes.ToDictionary(n => n, n => rules.Where(r => r.b == n).Select(r => r.a).ToList());
+            var required = nodes.ToDictionary(n => n, n => rules.Where(r => r.node == n).Select(r => r.require).ToList());
 
             var visited = new List<char>();
 
