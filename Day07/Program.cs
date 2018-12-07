@@ -55,14 +55,7 @@ namespace Day07
                 visited.Add(next.Value);
             }
 
-            var result = new StringBuilder();
-            foreach (var node in visited)
-            {
-                result.Append(node);
-            }
-
-            var answer1 = result.ToString();
-
+            var answer1 = new string(visited.ToArray());
             Console.WriteLine($"Answer 1: {answer1}");
 
 
