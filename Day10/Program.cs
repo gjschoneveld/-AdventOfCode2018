@@ -45,13 +45,13 @@ namespace Day10
 
             var minY = points.Min(p => p.position.y);
             var maxY = points.Max(p => p.position.y);
-            var maxHeight = maxY - minY + 1;
+            var height = maxY - minY + 1;
 
-            var height = maxHeight;
+            var minHeight = height;
 
-            while (height <= maxHeight)
+            while (height <= minHeight)
             {
-                maxHeight = height;
+                minHeight = height;
 
                 foreach (var p in points)
                 {
