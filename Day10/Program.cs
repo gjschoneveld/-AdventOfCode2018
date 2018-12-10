@@ -65,7 +65,7 @@ namespace Day10
                 seconds++;
             }
 
-            // we exceeded the maximum by 1 step, so we do 1 step back
+            // we exceeded the minimum by 1 step, so we do 1 step back
             foreach (var p in points)
             {
                 p.StepBack();
