@@ -40,7 +40,7 @@ namespace Day14
 
         public static string Simulate(int input, Part part)
         {
-            var inputString = input.ToString();
+            var inputDigits = GetDigits(input);
 
             var needed = 10;
 
@@ -86,17 +86,20 @@ namespace Day14
                         return result;
                     }
 
-                    if (part == Part.Part2 && last.index >= inputString.Length)
+                    if (part == Part.Part2 && last.index >= inputDigits.Count)
                     {
-                        var test = "";
+                        var match = true;
                         var current = last;
-                        for (int i = 0; i < inputString.Length; i++)
+                        foreach (var id in inputDigits.AsEnumerable().Reverse())
                         {
-                            test = current.value.ToString() + test;
+                            if (id != current.value)
+                            {
+                                match = false;
+                            }
                             current = current.previous;
                         }
 
-                        if (test == inputString)
+                        if (match)
                         {
                             return current.index.ToString();
                         }
