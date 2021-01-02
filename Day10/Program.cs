@@ -87,7 +87,7 @@ namespace Day10
                     var position = (x, y);
                     if (points.Any(p => p.position == position))
                     {
-                        Console.Write('#');
+                        Console.Write('█');
                     }
                     else
                     {
