@@ -16,9 +16,9 @@ namespace Day04
         {
             var result = new List<int>();
 
-            foreach (var sleep in sleeping)
+            foreach (var (from, to) in sleeping)
             {
-                for (int i = sleep.from; i < sleep.to; i++)
+                for (int i = from; i < to; i++)
                 {
                     result.Add(i);
                 }
