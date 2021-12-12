@@ -2,10 +2,10 @@
 
 class Sample
 {
-    public List<int> Instruction { get; set; }
+    public List<int> Instruction { get; set; } = new List<int>();
 
-    public List<int> RegistersBefore { get; set; }
-    public List<int> RegistersAfter { get; set; }
+    public List<int> RegistersBefore { get; set; } = new List<int>();
+    public List<int> RegistersAfter { get; set; } = new List<int>();
 
     public int Opcode => Instruction[0];
     public int A => Instruction[1];
