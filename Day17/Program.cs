@@ -71,7 +71,7 @@ var minY = clay.Min(p => p.y);
 var maxY = clay.Max(p => p.y);
 
 var toProcess = new Stack<(int x, int y)>();
-toProcess.Push((500, 1));
+toProcess.Push((500, 0));
 
 while (toProcess.Count > 0)
 {
