@@ -27,21 +27,6 @@ char[,] Parse(string[] input)
     return result;
 }
 
-void Print(char[,] field)
-{
-    for (int row = 0; row < field.GetLength(0); row++)
-    {
-        for (int column = 0; column < field.GetLength(1); column++)
-        {
-            Console.Write(field[row, column]);
-        }
-
-        Console.WriteLine();
-    }
-
-    Console.WriteLine();
-}
-
 bool IsValid(char[,] field, (int x, int y) position)
 {
     return 0 <= position.x && position.x < field.GetLength(1) &&
