@@ -83,7 +83,8 @@ class Field
             visited.UnionWith(positions);
 
             positions = positions
-                .SelectMany(p => GetNeighbours(p)).Where(p => !visited.Contains(p) && !Walls.Contains(p) && !Units.ContainsKey(p))
+                .SelectMany(p => GetNeighbours(p))
+                .Where(p => !visited.Contains(p) && !Walls.Contains(p) && !Units.ContainsKey(p))
                 .Distinct()
                 .ToList();
         }
