@@ -200,7 +200,10 @@ class Program
         while (armies.All(a => !a.Dead))
         {
             // target selection
-            var availableTargets = armies.ToDictionary(a => otherArmy[a], a => a.Groups.Where(g => !g.Dead).ToHashSet());
+            var availableTargets = armies
+                .ToDictionary(a => otherArmy[a], a => a.Groups
+                .Where(g => !g.Dead)
+                .ToHashSet());
 
             var targets = new Dictionary<Group, Group>();
 
@@ -208,7 +211,11 @@ class Program
             {
                 foreach (var group in army.Groups.OrderByDescending(g => g.EffectivePower).ThenByDescending(g => g.Initiative))
                 {
-                    var target = availableTargets[army].OrderByDescending(g => group.DamageTo(g)).ThenByDescending(g => g.EffectivePower).ThenByDescending(g => g.Initiative).FirstOrDefault();
+                    var target = availableTargets[army]
+                        .OrderByDescending(g => group.DamageTo(g))
+                        .ThenByDescending(g => g.EffectivePower)
+                        .ThenByDescending(g => g.Initiative)
+                        .FirstOrDefault();
 
                     if (target == null || group.DamageTo(target) == 0)
                     {
@@ -232,6 +239,7 @@ class Program
 
             if (!damageTaken)
             {
+                // no damage means endless loop; no winner in that case
                 return null;
             }
         }
